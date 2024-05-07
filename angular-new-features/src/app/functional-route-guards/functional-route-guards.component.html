@@ -1,0 +1,14 @@
+<h1>Functional Route Guard</h1>
+
+<div style="flex-direction: column; display: flex; gap: 5px">
+  Some Work
+  <input [(ngModel)]="someWork" style="width: fit-content">
+
+
+  @if (unsavedChangesPresent) {
+   <p style="color: red"> Navigation to home is only possible while you no unsaved changes.</p>
+  }
+
+  <a routerLink="/">Back to Home</a>
+
+</div>

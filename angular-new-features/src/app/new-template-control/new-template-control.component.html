@@ -1,0 +1,37 @@
+<h1>New Template Control</h1>
+
+<h2>Example if/else</h2>
+@if (loggedIn) {
+  The user is logged in.
+} @else {
+  The user is not logged in.
+}
+<button (click)="loggedIn = !loggedIn">Toggle logged in status</button>
+
+
+<h2>Example of looping through element</h2>
+<ul>Foods:</ul>
+@for (food of foods; track food; let i = $index; let first = $first; let last = $last; let even = $even; let odd = $odd) {
+  <li>
+    {{food}}
+    Index: {{i}}
+    Is first?: {{first}}
+    Is last?: {{last}}
+    Is iterator index even?: {{even}}
+    Is iterator index odd?: {{odd}}
+  </li>
+} @empty {
+  <p>We have no food!</p>
+}
+<button (click)="foods.push('ice cream')">Add food</button>
+<button (click)="foods.pop()">Remove food</button>
+
+<h2>Example switch statement</h2>
+@switch (accessLevel) {
+  @case(UserType.USER) { This is a standard user }
+  @case(UserType.ADMIN) { The user is an ADMIN }
+  @default { The access level did not match any of the defined cases }
+}
+<button (click)="accessLevel = UserType.ADMIN">Switch to Admin</button>
+<button (click)="accessLevel = UserType.USER">Switch to User</button>
+<button (click)="accessLevel = UserType.OTHER">Switch to Other/button>

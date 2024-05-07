@@ -1,0 +1,71 @@
+<h1>Deferrable Views</h1>
+
+<h2>Default Defer</h2>
+<!--<div style="height: 40px; width: 40px; background: orangered;"></div>-->
+
+<!--By default, a deferred view will render when the app is idle -->
+@defer {
+  <div style="height: 40px; width: 40px; background: cadetblue;"></div>
+} @loading (after 100ms; minimum 1s) {
+  <p>Loading...</p>
+}
+
+
+<h2>Triggers</h2>
+<p><b>Timer Trigger</b></p>
+<!--Using the timing trigger you can specify a time amount to defer the loading of the content-->
+@defer (on timer(5s)) {
+  <div style="height: 40px; width: 40px; background: darkgreen;"></div>
+} @placeholder {
+  <p>Placeholder until timer is finished</p>
+}
+
+<p><b>Interaction Trigger</b></p>
+@defer (on interaction) {
+  <div style="height: 40px; width: 40px; background: darkslategray;"></div>
+} @placeholder {
+  <p>Click this text to switch the view</p>
+}
+
+<p><b>Hover Trigger</b></p>
+@defer (on hover) {
+  <div style="height: 40px; width: 40px; background: orangered;"></div>
+} @placeholder {
+  <p>Hover over this text to switch the view</p>
+}
+
+<p><b>When Trigger</b></p>
+<p>Will show the content when the 'when' trigger becomes true. Note: if the when condition later becomes false the content will still be displayed.</p>
+<button (click)="showContent = !showContent">Show Content</button>
+@defer (when showContent) {
+  <div style="height: 40px; width: 40px; background: purple;"></div>
+} @placeholder {
+  <p>Hover over this text to switch the view</p>
+}
+
+<p><b>Multiple Triggers</b></p>
+<p>Multiple trigger conditions can be used together. They are all treated as 'or' statements.</p>
+<p>This content will show after 10 seconds, or when the placeholder is clicked</p>
+@defer (on timer(10s); on interaction) {
+  <div style="height: 40px; width: 40px; background: green;"></div>
+} @placeholder {
+  <p>Click this text to switch the view</p>
+}
+
+<p><b>Viewport Triggers</b></p>
+<p>The content will be shown when it enters the viewport.</p>
+@defer (on viewport) {
+  <div style="height: 40px; width: 40px; background: blue;"></div>
+} @placeholder {
+  <p>placeholder text for viewport trigger</p>
+}
+
+<p><b>Viewport Template Reference Trigger</b></p>
+<p>Using a template reference, you can defer the loading of content until anoter element enters the viewport.</p>
+<p>Here the pink block should not be loaded until the 'Hello!' is reached.</p>
+@defer (on viewport(greeting)) {
+  <div style="height: 40px; width: 40px; background: pink;"></div>
+}
+<div style="width: 20px; height: 100px; background: chocolate"></div>
+<div #greeting>Hello!</div>
+

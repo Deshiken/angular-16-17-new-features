@@ -1,0 +1,17 @@
+<h1>Signals</h1>
+
+<a href="https://angular.io/guide/signals" target="_blank">Reference</a>
+
+<p>Signals are similar to observables in that they are used to notify interested consumers of value changes with a simpler
+  syntax than observables.</p>
+<p>A signal's value is always read through a getter function.</p>
+
+<h2>Simple WritableSignal Example</h2>
+<p>Shopping Cart Total: {{this.cartAmount()}}</p>
+<button (click)="incrementCartAmount()">Increment cart amount</button>
+<button (click)="resetCartAmount()">Reset cart amount</button>
+
+<h2>Computed Signal Example</h2>
+<p>Computed signals depend on other signals to determine their value</p>
+<p>Computed signals depend on other signals to determine their value</p>
+<p>Shopping Cart Total with tax: {{this.cartAmountWithTax()}}</p>
